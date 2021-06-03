@@ -185,6 +185,7 @@ def train(cfg):
 @hydra.main(config_path='config', config_name='config')
 def main(cfg):
     omegaconf.OmegaConf.set_struct(cfg, False)
+    os.environ['CUDA_VISIBLE_DEVICES'] = str(cfg.gpu)
     cfg.log_path = 'log'
     logger.info(cfg.pretty())
     train(cfg)

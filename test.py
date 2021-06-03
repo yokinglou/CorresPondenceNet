@@ -51,13 +51,6 @@ def test(cfg):
     embeddings = np.concatenate(embeddings)
     keypoints = np.concatenate(keypoints)
 
-    # if cfg['random']:
-    #     print("using random embeddings instead")
-    #     embeddings = np.random.randn(*pcds.shape)
-    # if cfg['xyz']:
-    #     print("using xyz instead")
-    #     embeddings = pcds.copy()
-
     file_path = os.path.join(cfg.data_path, 'model_geodesic_mat/{}_geo_dists.h5'.format(cfg.class_name))
     with h5py.File(file_path, 'r') as f:
         dist_mats = f['geo_dists'][:]
@@ -92,6 +85,7 @@ def test(cfg):
 @hydra.main(config_path='config', config_name='config')
 def main(cfg):
     omegaconf.OmegaConf.set_struct(cfg, False)
+    os.environ['CUDA_VISIBLE_DEVICES'] = str(cfg.gpu)
     cfg.log_path = 'log'
     logger.info(cfg.pretty())
     test(cfg)
