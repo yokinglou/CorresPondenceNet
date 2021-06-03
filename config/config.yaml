@@ -1,0 +1,34 @@
+data_path: /data/home/yujing/project/dataset/data_unified/
+checkpoint_path: checkpoints/
+log_path: logs/
+
+
+task: correspondence
+task_type: embedding
+dist_type: geodesic
+
+gpu: 0
+checkpoint_name: model_best.pth.tar
+embedding_size: 128
+batch_size: 4
+num_workers: 1
+max_epoch: 100
+lr: 0.001
+weight_decay: 0.001
+lr_step: 10
+lr_decay: 0.9
+eval_step: 1
+margin: 1
+dist_thr: -1
+
+class_name: 02691156
+
+defaults:
+  - network: pointnet2
+
+hydra:
+  run:
+    dir: log/${class_name}/${network.name}
+  sweep:
+    dir: log
+    subdir: ${class_name}/${network.name}
