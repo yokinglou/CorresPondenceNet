@@ -1,14 +1,10 @@
-data_path: /data/home/yujing/project/dataset/data_unified/
-checkpoint_path: checkpoints/
-log_path: logs/
-
+data_path: Absolute Path to CPNet Dataset
 
 task: correspondence
 task_type: embedding
-dist_type: geodesic
+dist_type: 'geodesic'
 
 gpu: 0
-checkpoint_name: model_best.pth.tar
 embedding_size: 128
 batch_size: 4
 num_workers: 1
@@ -21,7 +17,7 @@ eval_step: 1
 margin: 1
 dist_thr: -1
 
-class_name: 02691156
+class_name: airplane
 
 defaults:
   - network: pointnet2
