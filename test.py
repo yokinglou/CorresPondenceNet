@@ -51,7 +51,7 @@ def test(cfg):
     embeddings = np.concatenate(embeddings)
     keypoints = np.concatenate(keypoints)
 
-    file_path = os.path.join(cfg.data_path, 'model_geodesic_mat/{}_geo_dists.h5'.format(test_dataset.name2id[cfg.class_name.capitalize()]))
+    file_path = os.path.join(cfg.data_path, 'obj_geo_dist_mat/{}_geo_dists.h5'.format(test_dataset.name2id[cfg.class_name.capitalize()]))
     with h5py.File(file_path, 'r') as f:
         dist_mats = f['geo_dists'][:]
         mesh_names = f['mesh_names'][:].tolist()

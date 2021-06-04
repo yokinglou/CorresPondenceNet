@@ -8,7 +8,7 @@ import json
 class CorresPondenceNet(torch.utils.data.Dataset):
     def __init__(self, cfg, flag='train'):
         super().__init__()
-        with open(os.path.join(cfg['data_path'], 'synsetoffset2category.json'), 'r') as f: 
+        with open(os.path.join(cfg['data_path'], 'name2id.json'), 'r') as f: 
             self.name2id = json.load(f)
 
         try:
@@ -18,7 +18,7 @@ class CorresPondenceNet(torch.utils.data.Dataset):
 
         self.task = cfg['task_type']
 
-        with h5py.File(os.path.join(cfg['data_path'], 'kp_mean_distance_geodesic', '{}_mean_distance.h5'.format(self.catg)), 'r') as f: 
+        with h5py.File(os.path.join(cfg['data_path'], 'corr_mean_dist_geo', '{}_mean_distance.h5'.format(self.catg)), 'r') as f: 
             self.mean_distance = f['mean_distance'][:]
             
         if self.task == 'embedding':
@@ -32,7 +32,6 @@ class CorresPondenceNet(torch.utils.data.Dataset):
                 self.pcds = f['point_clouds'][:]
                 self.keypoints = f['keypoints'][:]
                 self.mesh_names = f['mesh_names'][:]
-            self.pids = np.load(os.path.join(cfg['data_path'], '{}_pids.npy'.format(self.catg)))
            
             num_train = int(self.pcds.shape[0] * 0.7)
             num_divide = int(self.pcds.shape[0] * 0.85)
