@@ -529,15 +529,4 @@ class PointConvDensityClsSsg(nn.Module):
         x = l0_points.permute(0, 2, 1)
         return x # , x
 
-SaliencyModel = PointConvDensityClsSsg
 CorrespondenceModel = PointConvDensityClsSsg
-
-if __name__ == '__main__':
-    import os
-    import torch
-    os.environ["CUDA_VISIBLE_DEVICES"] = '0'
-    input = torch.randn((8,3,2048)).cuda()
-    label = torch.randn(8,16).cuda()
-    model = PointConvDensityClsSsg(num_classes=40).cuda()
-    output = model(input)[1]
-    print(output.size())

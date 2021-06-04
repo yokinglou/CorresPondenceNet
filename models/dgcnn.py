@@ -155,22 +155,7 @@ class DGCNN(nn.Module):
         return x.transpose(1, 2).contiguous()#, embedding.transpose(1, 2).contiguous()
 
 
-SaliencyModel = DGCNN
 CorrespondenceModel = DGCNN
 
 
-if __name__ == '__main__':
-    anchors = t.tensor(
-        [
-            [[1, 2, 3]],
-            [[4, 5, 6]]
-        ]
-    ).float()
-    pts = t.tensor(
-        [
-            [[1.1, 2.2, 3.3]],
-            [[4.4, 5.5, 6.6]]
-        ]
-    )
-    print(pts.device)
 

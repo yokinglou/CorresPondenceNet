@@ -324,5 +324,4 @@ class PointNetFeaturePropagation(nn.Module):
             new_points = F.relu(bn(conv(new_points)))
         return new_points
 
-SaliencyModel = get_model
 CorrespondenceModel = get_model

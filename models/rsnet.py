@@ -208,5 +208,4 @@ class RSNet(nn.Module):
                     hidden_list.append(torch.zeros(2, bs, hid_sz).cuda())
         return hidden_list
 
-SaliencyModel = RSNet
 CorrespondenceModel = RSNet

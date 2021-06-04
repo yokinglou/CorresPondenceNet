@@ -227,5 +227,4 @@ class GraphConvNet(nn.Module):
         return embeddings #, embeddings
 
 
-SaliencyModel = GraphConvNet
 CorrespondenceModel = GraphConvNet

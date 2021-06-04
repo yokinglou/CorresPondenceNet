@@ -247,11 +247,5 @@ class Spidercnn_seg_fullnet(nn.Module):
         return embedding# B x num_parts x N
 
 
-SaliencyModel = Spidercnn_seg_fullnet
 CorrespondenceModel = Spidercnn_seg_fullnet
 
-
-if __name__ == '__main__':
-    input = torch.randn((8, 3, 2048)).cuda()
-    net = Spidercnn_seg_fullnet(num_parts=64).cuda()
-    print(net(input).shape)

@@ -164,5 +164,4 @@ class RSCNN_MSN(nn.Module):
         return self.FC_layer(l_features[0]).transpose(1, 2).contiguous()
 
 
-SaliencyModel = RSCNN_MSN
 CorrespondenceModel = RSCNN_MSN
