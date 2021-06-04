@@ -2,13 +2,13 @@
 
 This repository includes implementation and dataset for the ECCV '20 paper: "Human Correspondence Consensus for 3D Object Semantic Understanding". You can access the full paper from [here](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123670494.pdf) or [arXiv](https://arxiv.org/abs/1912.12577).
 
-<!-- ![intro](/figs/intro.png) -->
-<img src="/figs/intro.png" width="600"/>
+![intro](/figs/intro.png)
+<!-- <img src="/figs/intro.png" width="600"/> -->
 
 ## Dataset
 CPNet dataset has a collection of 25 categories, 2,334 models based on ShapeNetCore, which includes 1,000+ correspondence sets with 104,861 points. The correspondence sets ![1](http://latex.codecogs.com/svg.latex?\\{\\mathcal{C}_i|i=1,\\cdots,N_{\\mathcal{C}}\\}) are shwon in figure below. Each correspondence ![2](http://latex.codecogs.com/svg.latex?\\mathcal{C}_i) contains points with same semantics on each object.
-<!-- ![corr_sets](/figs/corr_sets.jpg) -->
-<img src="/figs/corr_sets.jpg" width="600"/>
+![corr_sets](/figs/corr_sets.jpg)
+<!-- <img src="/figs/corr_sets.jpg" width="600"/> -->
 
 Dataset can be downloaded from [Google Drive](https://drive.google.com/file/d/1C3lOg8rmNOVvMc-1lLVShkbw95zs5sBC/view?usp=sharing).
 
