@@ -34,6 +34,8 @@ The details of each file is as follows:
     - "mean_distance": distances between correspondences
 
 ## How to Learn Dense Semantic Embeddings
+![embedding](/figs/embedding.png)
+
 Please add the absolute path of the CPNet dataset in [config](./config/config.yaml) at first. 
 
 ### Traing a Model
@@ -41,7 +43,7 @@ You can train on CPNet and get pointwise semantic embeddings with differentt bac
 ```
 python train.py network=pointnet2 class_name=airplane
 ```
-### Test with mGE
+### Testing with mGE
 If you want to test the trained model for correspondence benchmark, please run
 ```
 python test.py network=pointnet2 class_name=airplane
