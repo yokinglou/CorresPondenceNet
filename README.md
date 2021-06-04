@@ -1,4 +1,4 @@
-# CorresPondenceNet
+# CorresPondenceNet (CPNet)
 
 This repository includes implementation and dataset for the ECCV '20 paper: "Human Correspondence Consensus for 3D Object Semantic Understanding". You can access the full paper from [here](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123670494.pdf) or [arXiv](https://arxiv.org/abs/1912.12577).
 
