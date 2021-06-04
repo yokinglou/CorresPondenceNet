@@ -61,3 +61,12 @@ If you use CPNet in your research, please cite the [paper](https://www.ecva.net/
     organization={Springer}
 }
 ```
+
+## References
+The implementations of models is referenced by:
+- [yanx27/Pointnet_Pointnet2_pytorch](https://github.com/yanx27/Pointnet_Pointnet2_pytorch)
+- [WangYueFt/dgcnn](https://github.com/WangYueFt/dgcnn)
+- [DylanWusee/pointconv_pytorch](https://github.com/DylanWusee/pointconv_pytorch)
+- [sausagecy/RSCNN_Pytorch1.0](https://github.com/sausagecy/RSCNN_Pytorch1.0)
+- [qianguih/RSNet](https://github.com/qianguih/RSNet)
+- [xyf513/SpiderCNN](https://github.com/xyf513/SpiderCNN)
