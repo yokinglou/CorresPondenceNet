@@ -3,9 +3,13 @@ import sys
 import numpy as np
 import torch
 import h5py
+import multiprocessing
+import pickle
 from sklearn import neighbors
 from sklearn.neighbors import KDTree
-
+from sklearn.utils.graph import graph_shortest_path
+from tqdm import tqdm
+BASEDIR = os.path.dirname(os.path.abspath(__file__))
 
 class ModelWrapper(torch.nn.Module):
     def __init__(self, model_impl) -> None:
@@ -90,6 +94,34 @@ def normalize_point_cloud(pts):
     norm = torch.sqrt(norm).reshape(-1, 1)
     pts = pts / norm
     return pts
+
+def gen_geo_dists(pc):
+    graph = neighbors.kneighbors_graph(pc, 20, mode='distance', include_self=False)
+    return graph_shortest_path(graph, directed=False)
+
+def gen_geo_dists_wrapper(args):
+    pc_name, pc = args
+    return (pc_name, gen_geo_dists(pc))
+
+def load_geodesics(dataset, split):
+    fn = os.path.join(BASEDIR, 'cache', '{}_geodists_{}.pkl'.format(dataset.catg, split))
+    # need a large amount of memory to load geodesic distances!!!
+    if not os.path.exists(os.path.join(BASEDIR, 'cache')):
+        os.makedirs(os.path.join(BASEDIR, 'cache'))
+    if os.path.exists(fn):
+        print('Found geodesic cache...')
+        geo_dists = pickle.load(open(fn, 'rb'))
+    else:
+        print('Generating geodesics, this may take some time...')
+        geo_dists = []
+        with multiprocessing.Pool(processes=os.cpu_count() // 2) as pool:
+            for res in tqdm(pool.imap_unordered(gen_geo_dists_wrapper, 
+                                                [(dataset.mesh_names[i], dataset.pcds[i]) for i in range(len(dataset))]), 
+                            total=len(dataset)):
+                geo_dists.append(res)
+        geo_dists = dict(geo_dists)
+        pickle.dump(geo_dists, open(fn, 'wb'))
+    return geo_dists
 
 def geo_error_per_cp(pcds, embeddings, kp_indices, dist_mats=None):
     """

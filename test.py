@@ -9,7 +9,7 @@ import h5py
 from tqdm import tqdm
 from torch.utils.data import DataLoader
 from dataset import CorresPondenceNet
-from utils import ModelWrapper, geo_error_per_cp
+from utils import ModelWrapper, geo_error_per_cp, load_geodesics
 
 logger = logging.getLogger(__name__)
 
@@ -27,6 +27,8 @@ def test(cfg):
                                  shuffle=False, 
                                  num_workers=cfg.num_workers, 
                                  collate_fn=my_collect_fn)
+
+    geo_dists = load_geodesics(test_dataset, 'test')
     
     cfg.num_classes = cfg.embedding_size
     model_impl = getattr(importlib.import_module('.{}'.format(cfg.network.name), package='models'), '{}Model'.format(cfg.task.capitalize()))(cfg).cuda()
@@ -51,16 +53,10 @@ def test(cfg):
     embeddings = np.concatenate(embeddings)
     keypoints = np.concatenate(keypoints)
 
-    file_path = os.path.join(cfg.data_path, 'obj_geo_dist_mat/{}_geo_dists.h5'.format(test_dataset.name2id[cfg.class_name.capitalize()]))
-    with h5py.File(file_path, 'r') as f:
-        dist_mats = f['geo_dists'][:]
-        mesh_names = f['mesh_names'][:].tolist()
-
     dist_mats_test_data = []
     for i in range(pcds.shape[0]):
         mesh = test_dataset.mesh_names[i]
-        idx = mesh_names.index(mesh)
-        dist_mats_test_data.append(dist_mats[idx])
+        dist_mats_test_data.append(geo_dists[mesh])
     dist_mats_test_data = np.stack(dist_mats_test_data)
 
     errors = []
