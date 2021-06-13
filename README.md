@@ -39,7 +39,7 @@ The details of each file is as follows:
 Please add the absolute path of the CPNet dataset in [config](./config/config.yaml) at first. 
 
 ### Traing a Model
-You can train on CPNet and get pointwise semantic embeddings with differentt backbones in [models](./models/), for example:
+You can train on CPNet and get pointwise semantic embeddings with different backbones in [models](./models/), for example:
 ```
 python train.py network=pointnet2 class_name=airplane
 ```
