@@ -1,5 +1,4 @@
-data_path: Absolute Path to CPNet Dataset
-
+data_path: 
 task: correspondence
 task_type: embedding
 dist_type: 'geodesic'
@@ -16,7 +15,7 @@ lr_decay: 0.9
 eval_step: 1
 margin: 1
 dist_thr: -1
-
+laplacian_reg: false
 class_name: airplane
 
 defaults:

@@ -187,7 +187,7 @@ def main(cfg):
     omegaconf.OmegaConf.set_struct(cfg, False)
     os.environ['CUDA_VISIBLE_DEVICES'] = str(cfg.gpu)
     cfg.log_path = 'log'
-    logger.info(cfg.pretty())
+    logger.info(omegaconf.OmegaConf.to_yaml(cfg))
     train(cfg)
 
 if __name__ == "__main__":

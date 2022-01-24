@@ -1,4 +1,4 @@
-hydra
+hydra-core
 omegaconf
 tqdm
 h5py
