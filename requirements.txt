@@ -1,0 +1,7 @@
+hydra
+omegaconf
+tqdm
+h5py
+scipy
+scikit-learn
+tensorboardX

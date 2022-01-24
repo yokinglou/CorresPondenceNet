@@ -3,3 +3,5 @@ data
 cache
 .vscode
 __pycache__
+debug.yaml
+.env
