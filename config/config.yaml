@@ -1,4 +1,5 @@
-data_path: 
+data_path: /data/home/yujinglou/project/dataset/cpnet_dataset/
+
 task: correspondence
 task_type: embedding
 dist_type: 'geodesic'
