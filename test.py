@@ -10,6 +10,7 @@ from tqdm import tqdm
 from torch.utils.data import DataLoader
 from dataset import CorresPondenceNet
 from utils import ModelWrapper, geo_error_per_cp, load_geodesics
+from visualizer.tools import *
 
 logger = logging.getLogger(__name__)
 
@@ -53,6 +54,16 @@ def test(cfg):
     embeddings = np.concatenate(embeddings)
     keypoints = np.concatenate(keypoints)
 
+    # Visualize the predicred embeddings
+    if cfg.test_vis:
+        if not os.path.exists('test_vis'):
+            os.mkdir('test_vis')
+        pcds = pcds[:, :, [2,0,1]]
+        pcds[:, :, 0] *= -1
+        rgbs = ebd2rgb(embeddings)
+        plot_pcd(pcds, rgbs)
+
+    # Calculate mean Geodesic Erros.
     dist_mats_test_data = []
     for i in range(pcds.shape[0]):
         mesh = test_dataset.mesh_names[i]
@@ -83,7 +94,7 @@ def main(cfg):
     omegaconf.OmegaConf.set_struct(cfg, False)
     os.environ['CUDA_VISIBLE_DEVICES'] = str(cfg.gpu)
     cfg.log_path = 'log'
-    logger.info(cfg.pretty())
+    logger.info(omegaconf.OmegaConf.to_yaml(cfg))
     test(cfg)
 
 if __name__ == "__main__":
