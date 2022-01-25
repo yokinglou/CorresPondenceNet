@@ -10,7 +10,7 @@ CPNet dataset has a collection of 25 categories, 2,334 models based on ShapeNetC
 ![corr_sets](/figs/corr_sets.jpg)
 <!-- <img src="/figs/corr_sets.jpg" width="600"/> -->
 
-Dataset can be downloaded from [Google Drive](https://drive.google.com/file/d/1C3lOg8rmNOVvMc-1lLVShkbw95zs5sBC/view?usp=sharing).
+Dataset can be downloaded from [Google Drive](https://drive.google.com/file/d/1C3lOg8rmNOVvMc-1lLVShkbw95zs5sBC/view?usp=sharing) or [OneDrive](https://sjtueducn-my.sharepoint.com/:u:/g/personal/louyujing_sjtu_edu_cn/Efh6uHP2IlVBgEg5MyNRNlcB8Q5Y1gKBX7Xyd-iu_YhddA?e=Iu9jzV).
 
 ### Data Layout
 CPNet dataset contains the correspondence annotations on each object and geodesic distances between correspondences. The structure of dataset is as follow:
