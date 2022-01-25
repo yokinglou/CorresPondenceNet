@@ -36,6 +36,17 @@ The details of each file is as follows:
 ## How to Learn Dense Semantic Embeddings
 ![embedding](/figs/embedding.png)
 
+## Install
+```
+# Create a new conda environment
+conda create -n cpnet python=3.7
+conda activate cpnet
+
+conda install pytorch==1.7.1 torchvision==0.8.2 cudatoolkit=10.1 -c pytorch
+pip install -r requirements.txt
+```
+
+## Data
 Please add the absolute path of the CPNet dataset in [config](./config/config.yaml) at first. 
 
 ### Traing a Model
