@@ -74,7 +74,7 @@ If you use CPNet in your research, please cite the [paper](https://www.ecva.net/
 ```
 
 ## References
-The implementations of models is referenced by:
+The implementations of models are referenced by:
 - [yanx27/Pointnet_Pointnet2_pytorch](https://github.com/yanx27/Pointnet_Pointnet2_pytorch)
 - [WangYueFt/dgcnn](https://github.com/WangYueFt/dgcnn)
 - [DylanWusee/pointconv_pytorch](https://github.com/DylanWusee/pointconv_pytorch)
