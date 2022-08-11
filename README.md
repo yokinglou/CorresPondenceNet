@@ -49,18 +49,18 @@ pip install -r requirements.txt
 ### Data
 Please add the absolute path of the CPNet dataset in [config](./config/config.yaml) at first. 
 
-### Traing a Model
+### Train a Model
 You can train on CPNet and get pointwise semantic embeddings with different backbones in [models](./models/), for example:
 ```
 python train.py network=pointnet2 class_name=airplane
 ```
-### Testing with mGE
+### Test with mGE
 If you want to test the trained model for correspondence benchmark, please run
 ```
 python test.py network=pointnet2 class_name=airplane
 ```
 
-## Citing CPNet
+## Cite CPNet
 If you use CPNet in your research, please cite the [paper](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123670494.pdf):
 ```
 @inproceedings{lou2020human,
